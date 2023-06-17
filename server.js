@@ -3,6 +3,7 @@ require("dotenv").config();
 const cors = require("cors");
 const { connectDB } = require("./db");
 const { authRoutes } = require("./routes/auth.routes");
+const { blogRoutes } = require("./routes/blog.routes");
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
   res.json({ message: "welcome to apis" });
 });
 app.use("/api", authRoutes);
+app.use("/api", blogRoutes);
 
 app.listen(port, async () => {
   try {
